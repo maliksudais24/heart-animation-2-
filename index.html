@@ -366,8 +366,17 @@
 ctx.fillStyle = "#ff69b4"; // pink color
 ctx.font = "bold 28px 'Archivo Black', sans-serif";
 ctx.textAlign = "center";
-ctx.fillText("Happy Birthday", canvasWidth / 2, canvasHeight / 2 - 10);
-ctx.fillText("Ma Janan", canvasWidth / 2, canvasHeight / 2 + 30);
+
+// Draw main birthday messages in center
+ctx.fillText("Happy Birthday", canvasWidth / 2, canvasHeight / 2 - 30);
+ctx.fillText("Ma Janan", canvasWidth / 2, canvasHeight / 2);
+
+// Draw "I Love You" smaller and bottom-right inside heart
+ctx.font = "bold 16px 'Archivo Black', sans-serif";
+ctx.textAlign = "bottom";
+ctx.fillText("I Love You", canvasWidth / 2 + 2, canvasHeight / 2 + 100);
+
+
 
 
           requestAnimationFrame(animationLoop);
