@@ -145,12 +145,35 @@
           width: 80px;
           font-size: 12px;
         }
+       @media (max-width: 600px) {
+  #controls {
+    display: none; /* hidden by default on small screens */
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    right: 10px;
+    max-width: none;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    z-index: 101;
+    border-radius: 10px;
+  }
+
+  #toggle-controls {
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    text-align: center;
+  }
+}
+
       }
     </style>
   </head>
   <body>
     <div id="controls-container">
-      <button id="toggle-controls">Controls</button>
+      <button id="toggle-controls">&#9776;</button> <!-- Hamburger Icon -->
       <button id="toggle-fullscreen">Full Screen</button>
       <div id="controls">
         <div class="control-group">
@@ -355,10 +378,12 @@ ctx.fillText("Ma Janan", canvasWidth / 2, canvasHeight / 2 + 30);
           const controls = document.getElementById('controls');
           let controlsVisible = true;
 
-          document.getElementById('toggle-controls').addEventListener('click', () => {
-              controlsVisible = !controlsVisible;
-              controls.style.display = controlsVisible ? 'block' : 'none';
-          });
+       document.getElementById('toggle-controls').addEventListener('click', () => {
+  controlsVisible = !controlsVisible;
+  controls.style.display = controlsVisible ? 'block' : 'none';
+});
+
+
 
           document.getElementById('toggle-fullscreen').addEventListener('click', () => {
               if (!document.fullscreenElement) {
@@ -411,6 +436,11 @@ ctx.fillText("Ma Janan", canvasWidth / 2, canvasHeight / 2 + 30);
               canvasHeight = canvas.height = window.innerHeight;
               initHeartPath();
           });
+          if (window.innerWidth <= 600) {
+  document.getElementById('controls').style.display = 'none';
+  controlsVisible = false;
+}
+
       }
 
       // Initialize everything
